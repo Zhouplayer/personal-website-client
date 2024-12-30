@@ -1,8 +1,10 @@
 import axios from "axios";
 
+const apiBaseUrl = process.env.REACT_APP_API_URL || "http://127.0.0.1:5000/api";
+
 // 创建 Axios 实例，设置基础 URL 和默认配置
 const apiClient = axios.create({
-    baseURL: "http://127.0.0.1:5000/api", // Flask 后端的 URL
+    baseURL: apiBaseUrl, // Flask 后端的 URL
     headers: {
         "Content-Type": "application/json", // 设置默认请求头
     },
