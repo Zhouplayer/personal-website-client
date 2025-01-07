@@ -2,32 +2,48 @@ import axios from "axios";
 
 const apiBaseUrl = process.env.REACT_APP_API_URL || "http://127.0.0.1:5000/api";
 
-// 创建 Axios 实例，设置基础 URL 和默认配置
+// Create an Axios instance, set the base URL and default configuration
 const apiClient = axios.create({
-    baseURL: apiBaseUrl, // Flask 后端的 URL
+    baseURL: apiBaseUrl, // Flask backend URL
     headers: {
-        "Content-Type": "application/json", // 设置默认请求头
+        "Content-Type": "application/json", // Setting the default request header
     },
 });
 
-// 获取项目列表
+// Get list of projects
 export const getProjects = async () => {
     try {
-        const response = await apiClient.get("/projects"); // 发送 GET 请求到 /api/projects
-        return response.data.projects; // 返回数据
+        const response = await apiClient.get("/projects"); // send GET request to /api/projects
+        return response.data.projects;
     } catch (error) {
         console.error("Error fetching projects:", error);
-        throw error; // 抛出错误以便前端处理
+        throw error;
     }
 };
 
-// 获取项目
+// get specific project by ID
 export const getSProjectByID = async (id) => {
     try {
-        const response = await apiClient.get(`/projects/${id}`); // 发送 GET 请求到 /api/projects
-        return response.data; // 返回数据
+        const response = await apiClient.get(`/projects/${id}`); // send GET request to /api/projects
+        return response.data;
     } catch (error) {
         console.error(`Error fetching project with ID ${id}:`, error);
-        throw error; // 抛出错误以便前端处理
+        throw error;
+    }
+};
+
+// Get resume file from the backend
+export const getResumeFile = async () => {
+    try {
+        // Send a GET request to the backend's /api/resume endpoint
+        const response = await apiClient.get("/resume", {
+            responseType: "blob", // Ensure the response is binary file data
+        });
+
+        // Return the .pdf file as a Blob object
+        return new Blob([response.data], { type: "application/pdf" });
+    } catch (error) {
+        console.error("Error fetching the resume file:", error);
+        throw error;
     }
 };

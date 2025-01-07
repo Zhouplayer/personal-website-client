@@ -1,10 +1,28 @@
 import { NavLink } from "react-router-dom";
+import { getResumeFile } from "../api/Projects";
 
 function Hero() {
+    const handleOpenResume = async () => {
+        try {
+            // Fetch the PDF file as a Blob
+            const pdfBlob = await getResumeFile();
+
+            // Create a Blob URL for the PDF file
+            const pdfUrl = window.URL.createObjectURL(pdfBlob);
+
+            // Open the Blob URL in a new tab
+            window.open(pdfUrl, "_blank");
+
+            // Note: No need to revoke the Blob URL as the browser will handle it automatically
+        } catch (error) {
+            console.error("Failed to open the resume file:", error);
+        }
+    };
+
     return (
         <div className="bg-blue-50 px-4 py-20 relative">
             <div className="container-xl lg:container m-auto text-center relative z-10">
-                {/* 标题和个人简介 */}
+                {/* Title and biography */}
                 <h1 className="text-4xl md:text-5xl font-bold text-indigo-600 mb-4">
                     Hi, I'm Frank Zhou!
                 </h1>
@@ -18,7 +36,6 @@ function Hero() {
                     impactful projects that make a difference.
                 </p>
 
-                {/* 按钮 */}
                 <div className="flex justify-center space-x-4">
                     <NavLink
                         to="/projects"
@@ -33,7 +50,11 @@ function Hero() {
                         About Me
                     </NavLink>
                     <NavLink
-                        href="/Xuancheng_Zhou_Resume.pdf"
+                        onClick={(e) => {
+                            e.preventDefault(); // Prevent default navigation
+                            handleOpenResume(); // Open the resume
+                        }}
+                        to="#"
                         target="_blank"
                         className="bg-green-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-600 transition duration-300"
                     >
@@ -41,12 +62,12 @@ function Hero() {
                     </NavLink>
                 </div>
 
-                {/* 座右铭 */}
+                {/* Motto */}
                 <blockquote className="text-xl italic text-gray-600 mt-10 mb-10">
                     "Strive not to be a success, but rather to be of value." – Albert Einstein
                 </blockquote>
 
-                {/* 技能展示 */}
+                {/* Skills Demonstration */}
                 <div className="mt-12">
                     <h2 className="text-2xl font-bold text-indigo-500 mb-6">My Skills</h2>
                     <div className="flex flex-wrap justify-center gap-4">
@@ -103,7 +124,7 @@ function Hero() {
                 </div>
             </div>
 
-            {/* 背景装饰 */}
+            {/* background decoration */}
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-blue-100 via-white to-blue-50 opacity-20 -z-10"></div>
             <div className="absolute top-10 left-10 w-32 h-32 bg-indigo-100 rounded-full opacity-40 blur-xl"></div>
             <div className="absolute bottom-10 right-10 w-48 h-48 bg-indigo-200 rounded-full opacity-30 blur-2xl"></div>
