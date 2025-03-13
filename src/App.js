@@ -7,6 +7,7 @@ import AboutMe from './pages/AboutMePage';
 import NotFoundPage from './pages/NotFoundPage';
 import ProjectsPage from './pages/ProjectsPage';
 import ProjectPage from './pages/ProjectPage';
+import BirthdayPage from "./pages/BirthdayPage";
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
                 <Route path='/aboutMe' element={<AboutMe />} />
                 <Route path='/projects' element={<ProjectsPage />} />
                 <Route path='/projects/:id' element={<ProjectPage />} />
+                <Route path="/birthday/:friendName" element={<BirthdayPage />} />
                 <Route path='*' element={<NotFoundPage />} />
             </Route>
         )
