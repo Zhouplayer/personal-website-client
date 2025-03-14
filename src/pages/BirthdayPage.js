@@ -2,6 +2,7 @@ import { React, useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import BirthdayCard from "../components/birthday/BirthdayCard";
 import CountdownTimer from "../components/birthday/CountdownTimer";
+import { getBirthdayPersonInfo } from '../api/Birthday'
 import "../styles/BirthdayPage.css";
 
 function BirthdayPage() {
@@ -18,32 +19,28 @@ function BirthdayPage() {
     const audioRef = useRef(null);
 
     useEffect(() => {
-        fetch("http://localhost:5000/api/birthday", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ friend_name: friendName }) // 🎯 发送 JSON 数据
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.music && data.date) {
-                    setAudioSrc(data.music);
-                    setBirthdayTitle(data.name);
-                    setBirthdayMessage(data.message);
-                    setCakeSrc(data.cake);
-                    setCarouselSrc(data.carousel);
+        const fetchPersonInfo = async () => {
+            try {
+                const data = await getBirthdayPersonInfo(friendName);
+                setAudioSrc(data.music);
+                setBirthdayTitle(data.name);
+                setBirthdayMessage(data.message);
+                setCakeSrc(data.cake);
+                setCarouselSrc(data.carousel);
 
-                    // 🎂 解析服务器返回的生日日期
-                    const [year, month, day] = data.date.split("/").map(Number);
-                    const birthday = { day, month, year };
-                    setBirthdayDate(birthday);
-                } else {
-                    setBirthdayTitle("🎈 抱歉，找不到生日信息 🎁");
-                    setBirthdayMessage("请联系管理员添加生日祝福！");
-                }
-            })
-            .catch(error => console.error("Error fetching birthday data:", error));
+                // 🎂 解析服务器返回的生日日期
+                const [year, month, day] = data.date.split("/").map(Number);
+                const birthday = { day, month, year };
+                setBirthdayDate(birthday);
+            } catch (error) {
+                console.log("Fetch error data", error);
+                setBirthdayTitle("🎈 抱歉，找不到生日信息 🎁");
+                setBirthdayMessage("请联系管理员添加生日祝福！");
+            }
+
+        }
+
+        fetchPersonInfo();
     }, [friendName]);
 
     useEffect(() => {
