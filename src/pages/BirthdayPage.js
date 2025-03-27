@@ -1,6 +1,7 @@
 import { React, useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
-import BirthdayCard from "../components/birthday/BirthdayCard";
+import BirthdayCardTangJinglan from "../components/birthday/BirthdayCardTangJinglan";
+import BirthdayCardZhouYouyou from "../components/birthday/BirthdayCardZhouYouyou";
 import CountdownTimer from "../components/birthday/CountdownTimer";
 import { getBirthdayPersonInfo } from '../api/Birthday'
 import "../styles/BirthdayPage.css";
@@ -71,27 +72,47 @@ function BirthdayPage() {
     // 🎯 如果生日数据还未加载，显示加载状态
     if (!birthdayDate) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-pink-300 text-gray-800 text-2xl">
+            <div className="min-h-screen flex items-center justify-center text-gray-800 text-2xl">
                 正在加载生日信息...
             </div>
         );
     }
 
-    return isBirthday ? (
-        <BirthdayCard
-            birthdayTitle={birthdayTitle}
-            birthdayMessage={birthdayMessage}
-            cakeImage={cakeImage}
-            carouselImage={carouselImage}
-            audioSrc={audioSrc}
-            audioRef={audioRef}
-            playMusic={playMusic}
-            volume={volume}
-            setVolume={setVolume}
-        />
-    ) : (
-        showCountdown && <CountdownTimer birthday={birthdayDate} />
-    );
+    // 根据 `friendName` 选择不同的生日卡片
+    const renderContent = () => {
+        if (isBirthday) {
+            if (friendName === "TangJinglan") {
+                return <BirthdayCardTangJinglan
+                    birthdayTitle={birthdayTitle}
+                    birthdayMessage={birthdayMessage}
+                    cakeImage={cakeImage}
+                    carouselImage={carouselImage}
+                    audioSrc={audioSrc}
+                    audioRef={audioRef}
+                    playMusic={playMusic}
+                    volume={volume}
+                    setVolume={setVolume}
+                />;
+            } else if (friendName === "ZhouYouyou") {
+                return <BirthdayCardZhouYouyou
+                    birthdayTitle={birthdayTitle}
+                    birthdayMessage={birthdayMessage}
+                    cakeImage={cakeImage}
+                    carouselImage={carouselImage}
+                    audioSrc={audioSrc}
+                    audioRef={audioRef}
+                    playMusic={playMusic}
+                    volume={volume}
+                    setVolume={setVolume}
+                />;
+            }
+        }
+
+        // 如果不是生日，或者 `friendName` 不匹配，显示倒计时
+        return showCountdown ? <CountdownTimer birthday={birthdayDate} /> : null;
+    };
+
+    return renderContent();
 }
 
 export default BirthdayPage;

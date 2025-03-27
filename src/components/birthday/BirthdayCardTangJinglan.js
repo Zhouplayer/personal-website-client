@@ -5,7 +5,7 @@ function BirthdayCard({ birthdayTitle, birthdayMessage, cakeImage, carouselImage
     const [randomSelectedImage] = useState(Math.random() > 0.5 ? cakeImage : carouselImage);
 
     return (
-        <div className="birthday-container">
+        <div className="birthday-container bg-gradient-to-br from-[#ff85a2] via-[#ffb6c1] to-[#ff69b4]">
             {/* 🎊 掉落元素 */}
             <div className="falling-elements">
                 <span className="falling-item">❤️</span>

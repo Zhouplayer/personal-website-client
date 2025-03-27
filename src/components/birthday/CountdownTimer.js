@@ -29,7 +29,7 @@ function CountdownTimer({ birthday }) {
     }, [calculateTimeLeft]);
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center bg-pink-300 text-gray-800 text-center">
+        <div className="min-h-screen flex flex-col items-center justify-center bg-blue-300 text-gray-800 text-center">
             <h1 className="text-4xl md:text-6xl font-extrabold">🎂 倒计时至生日 🎉</h1>
             <p className="text-lg md:text-2xl mt-4">还有：</p>
             <div className="text-3xl md:text-5xl font-bold mt-2">
