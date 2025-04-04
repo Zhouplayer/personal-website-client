@@ -1,7 +1,7 @@
 import { React, useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import BirthdayCardTangJinglan from "../components/birthday/BirthdayCardTangJinglan";
-import BirthdayCardZhouYouyou from "../components/birthday/BirthdayCardZhouYouyou";
+import BirthdayCardZhouYouyou from "../components/birthday/BirthdayCardYouyou";
 import CountdownTimer from "../components/birthday/CountdownTimer";
 import { getBirthdayPersonInfo } from '../api/Birthday'
 import "../styles/BirthdayPage.css";
@@ -93,7 +93,7 @@ function BirthdayPage() {
                     volume={volume}
                     setVolume={setVolume}
                 />;
-            } else if (friendName === "ZhouYouyou") {
+            } else if (friendName === "Youyou") {
                 return <BirthdayCardZhouYouyou
                     birthdayTitle={birthdayTitle}
                     birthdayMessage={birthdayMessage}
