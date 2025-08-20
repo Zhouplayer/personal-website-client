@@ -5,7 +5,7 @@ module.exports = {
     ],
     theme: {
         extend: {
-            frontFamily: {
+            fontFamily: {
                 sans: ['Roboto', 'sans-serif']
             },
             gridTemplateColumns: {

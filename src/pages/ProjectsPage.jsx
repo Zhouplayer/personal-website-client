@@ -1,4 +1,4 @@
-import ProjectListings from "../components/ProjectListings.js"
+import ProjectListings from "../components/ProjectListings"
 
 function ProjectsPage() {
     return (
