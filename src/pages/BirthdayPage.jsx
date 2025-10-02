@@ -2,6 +2,7 @@ import { React, useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import BirthdayCardTangJinglan from "../components/birthday/BirthdayCardTangJinglan";
 import BirthdayCardZhouYouyou from "../components/birthday/BirthdayCardYouyou";
+import BirthdayCardNiannian from "../components/birthday/BirthdayCardNiannian";
 import CountdownTimer from "../components/birthday/CountdownTimer";
 import { getBirthdayPersonInfo } from '../api/Birthday'
 import "../styles/BirthdayPage.css";
@@ -81,30 +82,45 @@ function BirthdayPage() {
     // 根据 `friendName` 选择不同的生日卡片
     const renderContent = () => {
         if (isBirthday) {
-            if (friendName === "TangJinglan") {
-                return <BirthdayCardTangJinglan
-                    birthdayTitle={birthdayTitle}
-                    birthdayMessage={birthdayMessage}
-                    cakeImage={cakeImage}
-                    carouselImage={carouselImage}
-                    audioSrc={audioSrc}
-                    audioRef={audioRef}
-                    playMusic={playMusic}
-                    volume={volume}
-                    setVolume={setVolume}
-                />;
-            } else if (friendName === "Youyou") {
-                return <BirthdayCardZhouYouyou
-                    birthdayTitle={birthdayTitle}
-                    birthdayMessage={birthdayMessage}
-                    cakeImage={cakeImage}
-                    carouselImage={carouselImage}
-                    audioSrc={audioSrc}
-                    audioRef={audioRef}
-                    playMusic={playMusic}
-                    volume={volume}
-                    setVolume={setVolume}
-                />;
+            switch (friendName) {
+                case "TangJinglan":
+                    return <BirthdayCardTangJinglan
+                        birthdayTitle={birthdayTitle}
+                        birthdayMessage={birthdayMessage}
+                        cakeImage={cakeImage}
+                        carouselImage={carouselImage}
+                        audioSrc={audioSrc}
+                        audioRef={audioRef}
+                        playMusic={playMusic}
+                        volume={volume}
+                        setVolume={setVolume}
+                    />;
+                case "Youyou":
+                    return <BirthdayCardZhouYouyou
+                        birthdayTitle={birthdayTitle}
+                        birthdayMessage={birthdayMessage}
+                        cakeImage={cakeImage}
+                        carouselImage={carouselImage}
+                        audioSrc={audioSrc}
+                        audioRef={audioRef}
+                        playMusic={playMusic}
+                        volume={volume}
+                        setVolume={setVolume}
+                    />;
+                case "Niannian":
+                    return <BirthdayCardNiannian
+                        birthdayTitle={birthdayTitle}
+                        birthdayMessage={birthdayMessage}
+                        cakeImage={cakeImage}
+                        carouselImage={carouselImage}
+                        audioSrc={audioSrc}
+                        audioRef={audioRef}
+                        playMusic={playMusic}
+                        volume={volume}
+                        setVolume={setVolume}
+                    />;
+                default:
+                    break;
             }
         }
 
