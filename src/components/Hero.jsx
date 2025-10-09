@@ -78,7 +78,7 @@ function Hero() {
                             Python
                         </span>
                         <span className="bg-white text-indigo-600 px-4 py-2 rounded-full shadow-md text-sm font-semibold">
-                            Kotlin
+                            C/C++
                         </span>
                         <span className="bg-white text-indigo-600 px-4 py-2 rounded-full shadow-md text-sm font-semibold">
                             React.js
