@@ -88,7 +88,7 @@ function SelfDescription() {
                             <div className="flex flex-wrap gap-2">
                                 <span className="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">Java</span>
                                 <span className="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">Python</span>
-                                <span className="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">C#</span>
+                                <span className="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">C/C++</span>
                                 <span className="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">Kotlin</span>
                                 <span className="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">SQL</span>
                                 <span className="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold">JavaScript</span>
