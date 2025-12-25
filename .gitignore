@@ -1,5 +1,12 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# Personal photos and media files
+public/photos/*.jpg
+public/photos/*.jpeg
+public/photos/*.png
+public/photos/*.gif
+public/photos/tmp/
+
 # dependencies
 /node_modules
 /.pnp

@@ -8,6 +8,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import ProjectsPage from './pages/ProjectsPage';
 import ProjectPage from './pages/ProjectPage';
 import BirthdayPage from "./pages/BirthdayPage";
+import ChristmasPage from "./pages/ChristmasPage";
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
                 <Route path='/projects' element={<ProjectsPage />} />
                 <Route path='/projects/:id' element={<ProjectPage />} />
                 <Route path="/birthday/:friendName" element={<BirthdayPage />} />
+                <Route path="/christmas" element={<ChristmasPage />} />
                 <Route path='*' element={<NotFoundPage />} />
             </Route>
         )
