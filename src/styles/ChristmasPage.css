@@ -97,7 +97,7 @@
 body {
   margin: 0;
   background: #000;
-  overflow: hidden;
+  overflow-x: hidden;
   font-family: 'Inter', sans-serif;
 }
 

@@ -32,7 +32,7 @@ function BirthdayCard({
     }, []);
 
     return (
-        <div className="birthday-container relative overflow-hidden bg-gradient-to-br from-red-600 via-red-400 to-orange-300 min-h-screen flex flex-col items-center justify-center text-center p-6">
+        <div className="birthday-container relative overflow-x-hidden bg-gradient-to-br from-red-600 via-red-400 to-orange-300 min-h-screen flex flex-col items-center justify-center text-center p-6">
 
             {/* 🎆 烟花效果 */}
             <div className="absolute inset-0 pointer-events-none">
